@@ -1,0 +1,49 @@
+<%= form_for(@batch) do |f| %>
+  <% if @batch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@batch.errors.count, "error") %> prohibited this batch from being saved:</h2>
+
+      <ul>
+      <% @batch.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :size %><br>
+    <%= f.number_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :brew_dt %><br>
+    <%= f.text_field :brew_dt %>
+  </div>
+  <div class="field">
+    <%= f.label :primary_dt %><br>
+    <%= f.text_field :primary_dt %>
+  </div>
+  <div class="field">
+    <%= f.label :secondary_dt %><br>
+    <%= f.text_field :secondary_dt %>
+  </div>
+  <div class="field">
+    <%= f.label :ferm_fin_dt %><br>
+    <%= f.text_field :ferm_fin_dt %>
+  </div>
+  <div class="field">
+    <%= f.label :bttle_dt %><br>
+    <%= f.text_field :bttle_dt %>
+  </div>
+  <div class="field">
+    <%= f.label :standard_id %><br>
+    <%= f.text_field :standard_id %>
+  </div>
+  <div class="field">
+    <%= f.label :recipe_id %><br>
+    <%= f.text_field :recipe_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

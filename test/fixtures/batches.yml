@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  size: 1
+  brew_dt: MyString
+  primary_dt: MyString
+  secondary_dt: MyString
+  ferm_fin_dt: MyString
+  bttle_dt: MyString
+  standard_id: 
+  recipe_id: 
+
+two:
+  size: 1
+  brew_dt: MyString
+  primary_dt: MyString
+  secondary_dt: MyString
+  ferm_fin_dt: MyString
+  bttle_dt: MyString
+  standard_id: 
+  recipe_id: 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rating: 1
+  comment: MyText
+  recipe_id: 
+  batch_id: 
+  user_id: 
+
+two:
+  rating: 1
+  comment: MyText
+  recipe_id: 
+  batch_id: 
+  user_id: 

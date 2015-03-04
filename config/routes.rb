@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
-  resources :posts
+  devise_for :users
+  resources :reviews
+
+  resources :batches
+
+  resources :brew_types
+
+  resources :recipes
+
+  resources :standards
+
+  resources :comments
+
+  root 'recipes#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

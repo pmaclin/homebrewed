@@ -11,13 +11,96 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303045129) do
+ActiveRecord::Schema.define(version: 20150303211454) do
 
-  create_table "posts", force: :cascade do |t|
-    t.string   "author"
-    t.text     "content"
+  create_table "batches", force: :cascade do |t|
+    t.integer  "size"
+    t.string   "brew_dt"
+    t.string   "primary_dt"
+    t.string   "secondary_dt"
+    t.string   "ferm_fin_dt"
+    t.string   "bttle_dt"
+    t.integer  "standard_id"
+    t.integer  "recipe_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "batches", ["recipe_id"], name: "index_batches_on_recipe_id"
+  add_index "batches", ["standard_id"], name: "index_batches_on_standard_id"
+
+  create_table "brew_types", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "brewery_name"
+    t.text     "about"
+    t.integer  "brew_type_id"
+    t.integer  "standard_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "recipes", ["brew_type_id"], name: "index_recipes_on_brew_type_id"
+  add_index "recipes", ["standard_id"], name: "index_recipes_on_standard_id"
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "rating"
+    t.text     "comment"
+    t.integer  "recipe_id"
+    t.integer  "batch_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reviews", ["batch_id"], name: "index_reviews_on_batch_id"
+  add_index "reviews", ["recipe_id"], name: "index_reviews_on_recipe_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+
+  create_table "standards", force: :cascade do |t|
+    t.string   "style"
+    t.string   "color"
+    t.string   "aroma"
+    t.string   "taste"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.integer  "standard_id"
+    t.text     "about"
+    t.string   "city"
+    t.boolean  "do_u_brew"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

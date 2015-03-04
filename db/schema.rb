@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303211454) do
+ActiveRecord::Schema.define(version: 20150304025152) do
 
   create_table "batches", force: :cascade do |t|
     t.integer  "size"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20150303211454) do
     t.boolean  "do_u_brew"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
